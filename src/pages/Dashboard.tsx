@@ -124,7 +124,7 @@ export function Dashboard() {
               className="lg:col-span-2"
             >
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Recent Transactions</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mb-4"></h2>
                 <TransactionList 
                   transactions={transactions}
                   onDeleteTransaction={deleteTransaction}
