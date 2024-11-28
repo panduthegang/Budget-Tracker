@@ -1,0 +1,40 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /transactions/{transactionId} {
+      allow read: if request.auth != null && 
+                  resource.data.userId == request.auth.uid;
+      
+      allow create: if request.auth != null && 
+                    request.auth.token.email_verified == true &&
+                    request.resource.data.userId == request.auth.uid &&
+                    request.resource.data.description is string &&
+                    request.resource.data.description.size() > 0 &&
+                    request.resource.data.amount is number &&
+                    request.resource.data.amount > 0 &&
+                    request.resource.data.type in ['income', 'expense', 'credit-card'] &&
+                    (request.resource.data.type != 'expense' || 
+                     request.resource.data.category in ['food', 'transportation', 'utilities', 'entertainment', 'shopping', 'healthcare', 'other']);
+      
+      allow update: if request.auth != null &&
+                    request.auth.token.email_verified == true &&
+                    resource.data.userId == request.auth.uid &&
+                    request.resource.data.userId == request.auth.uid &&
+                    (!('description' in request.resource.data) || 
+                      (request.resource.data.description is string &&
+                       request.resource.data.description.size() > 0)) &&
+                    (!('amount' in request.resource.data) || 
+                      (request.resource.data.amount is number &&
+                       request.resource.data.amount > 0)) &&
+                    (!('type' in request.resource.data) || 
+                      request.resource.data.type in ['income', 'expense', 'credit-card']) &&
+                    (!('category' in request.resource.data) || 
+                      request.resource.data.category in ['food', 'transportation', 'utilities', 'entertainment', 'shopping', 'healthcare', 'other']);
+      
+      allow delete: if request.auth != null && 
+                    request.auth.token.email_verified == true &&
+                    resource.data.userId == request.auth.uid;
+    }
+  }
+}

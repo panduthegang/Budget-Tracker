@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB" />
+      <stop offset="100%" style="stop-color:#1E40AF" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1E40AF" />
+      <stop offset="100%" style="stop-color:#2563EB" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon -->
+  <g transform="translate(20, 20) scale(0.8)">
+    <circle fill="url(#gradient)" cx="80" cy="80" r="80"/>
+    <path fill="white" d="M80 40c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zm0 70c-16.542 0-30-13.458-30-30s13.458-30 30-30 30 13.458 30 30-13.458 30-30 30z"/>
+    <path fill="white" d="M85 50v10h20l-25 35-15-15-20 20 7 7 13-13 15 15 32-45v18h10V50z"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="url(#textGradient)">Budget Tracker</text>
+</svg>
