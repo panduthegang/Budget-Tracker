@@ -128,7 +128,6 @@ export function Dashboard() {
                 <TransactionList 
                   transactions={transactions}
                   onDeleteTransaction={deleteTransaction}
-                  onUpdateTransaction={updateTransaction}
                 />
               </div>
             </motion.div>
